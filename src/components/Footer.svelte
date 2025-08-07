@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-4 mb-5 mb-lg-0">
-        <h3 class="brand-logo mb-3">ZAPA<span>TOPIA</span></h3>
+        <h3 class="brand-logo mb-3">NEW<span>STYLE</span></h3>
         <p class="mb-4">
           Tu destino para encontrar el calzado perfecto que combina estilo,
           comodidad y calidad.

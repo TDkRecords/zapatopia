@@ -43,7 +43,7 @@
 </script>
 
 <svelte:head>
-  <title>Zapatopia - Tienda de Zapatos Premium</title>
+  <title>NewStyle - Tienda de Zapatos Premium</title>
   <meta
     name="description"
     content="Encuentra los mejores zapatos de calidad para hombre, mujer y niños en Zapatopia. Envío gratis por compras superiores a $299.900"

@@ -12,7 +12,7 @@
 <nav class="navbar navbar-expand-lg navbar-light sticky-top">
   <div class="container">
     <a class="navbar-brand brand-logo" href="/">
-      ZAPA<span>TOPIA</span>
+      NEW<span>STYLE</span>
     </a>
     <button
       class="navbar-toggler"

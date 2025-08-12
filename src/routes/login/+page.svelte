@@ -1,5 +1,5 @@
 <script>
-  import { auth, db } from "$lib/assets/jS/firebase";
+  import { auth, db } from "$lib/assets/js/firebase";
   import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,

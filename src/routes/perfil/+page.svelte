@@ -64,12 +64,17 @@
         </li>
       </ul>
 
-      <div class="d-flex justify-content-evenly align-items-center pt-2 mb-2">
-        <a class="btn btn-primary" href="/admin"> INVENTARIO </a>
-
-        <button class="btn text-danger" on:click={cerrarSesion}>
-          Cerrar Sesión
-        </button>
+      <div
+        class="row d-flex justify-content-evenly align-items-center pt-2 mb-2"
+      >
+        <div class="col-md-6">
+          <a class="btn btn-primary" href="/admin"> INVENTARIO </a>
+        </div>
+        <div class="col-md-6">
+          <button class="btn text-danger" on:click={cerrarSesion}>
+            Cerrar Sesión
+          </button>
+        </div>
       </div>
     </div>
   {:else}

@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { goto } from "$app/navigation";
   import { signOut } from "firebase/auth";
-  import { auth } from "$lib/assets/jS/firebase";
+  import { auth } from "$lib/assets/js/firebase";
   import { obtenerUsuario } from "$lib/assets/js/auth";
 
   let usuario = null;

@@ -1,4 +1,4 @@
-import { auth, db } from "$lib/assets/jS/firebase";
+import { auth, db } from "$lib/assets/js/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 

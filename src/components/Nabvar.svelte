@@ -1,70 +1,106 @@
 <script>
+  import { page } from "$app/stores";
+  import { obtenerUsuario } from "$lib/assets/js/auth.js";
+
   export let cartCount = 0;
+  let usuario = null;
+  let loading = true;
+
+  // Ruta actual
+  $: currentPath = $page.url.pathname;
+
+  // Escuchar autenticación
+  obtenerUsuario((userData, isLoading, error) => {
+    usuario = userData;
+    loading = isLoading;
+  });
 </script>
 
 <!-- Aviso superior -->
-<div class="bg-dark text-white text-center py-2">
-  <i class="bi bi-truck"></i> Envío gratis por compras superiores a $299.900
-</div>
+{#if usuario}
+  <div class="bg-dark text-white text-center py-2">
+    <i class="bi bi-truck"></i> Envío gratis por compras superiores a $299.900
+  </div>
+{/if}
 
-<!-- svelte-ignore a11y_consider_explicit_label -->
-<!-- Barra de navegación -->
 <nav class="navbar navbar-expand-lg navbar-light sticky-top">
   <div class="container">
     <a class="navbar-brand brand-logo" href="/">
       NEW<span>STYLE</span>
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="/">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/">Hombres</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/">Mujeres</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/">Niños</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/">Deportivos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/">Ofertas</a>
-        </li>
-      </ul>
-      <div class="d-flex align-items-center">
-        <div class="input-group me-3" style="max-width: 300px;">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Buscar zapatos..."
-          />
-          <button class="btn btn-outline-primary" type="button">
-            <i class="bi bi-search"></i>
-          </button>
+
+    {#if usuario}
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link {currentPath === '/' ? 'active' : ''}" href="/"
+              >Inicio</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link {currentPath === '/hombres' ? 'active' : ''}"
+              href="/hombres">Hombres</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link {currentPath === '/mujeres' ? 'active' : ''}"
+              href="/mujeres">Mujeres</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link {currentPath === '/kids' ? 'active' : ''}"
+              href="/kids">Niños</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link {currentPath === '/ofertas' ? 'active' : ''}"
+              href="/ofertas">Ofertas</a
+            >
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center">
+          <div class="input-group me-3" style="max-width: 300px;">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Buscar zapatos..."
+            />
+            <button class="btn btn-outline-primary" type="button">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+          <a href="/" class="cart-icon position-relative">
+            <i class="bi bi-cart3"></i>
+            <span class="cart-count">{cartCount}</span>
+          </a>
+          <a href="/perfil" class="cart-icon position-relative">
+            <i class="bi bi-person-circle"></i>
+          </a>
         </div>
-        <a href="/" class="cart-icon position-relative">
-          <i class="bi bi-cart3"></i>
-          <span class="cart-count">{cartCount}</span>
-        </a>
       </div>
-    </div>
+    {:else}
+      <div class="ms-auto">
+        <a href="/login" class="btn btn-primary">Entrar</a>
+      </div>
+    {/if}
   </div>
 </nav>
 
 <style>
-  /* Variables CSS */
   :root {
     --primary: #0d6efd;
     --secondary: #6c757d;
@@ -75,7 +111,6 @@
     --border-radius: 12px;
   }
 
-  /* Header */
   .navbar {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     background-color: white;
@@ -93,20 +128,16 @@
     color: var(--accent);
   }
 
+  /* Links con animación */
   .nav-link {
     font-weight: 500;
     color: var(--dark);
     margin: 0 10px;
-    transition: color 0.3s;
     position: relative;
+    transition: color 0.3s ease;
   }
 
-  .nav-link:hover,
-  .nav-link.active {
-    color: var(--primary);
-  }
-
-  .nav-link.active:after {
+  .nav-link::after {
     content: "";
     position: absolute;
     bottom: -5px;
@@ -114,6 +145,25 @@
     width: 100%;
     height: 2px;
     background-color: var(--primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--primary);
+  }
+
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+
+  .nav-link.active {
+    color: var(--primary);
+  }
+
+  .nav-link.active::after {
+    transform: scaleX(1);
   }
 
   .cart-icon {

@@ -50,302 +50,318 @@
   />
 </svelte:head>
 
-<!-- Hero Section -->
-<section class="hero-section">
-  <div class="container text-center">
-    <h1 class="hero-title">Encuentra tu estilo perfecto</h1>
-    <p class="hero-subtitle">
-      Calzado de calidad para cada ocasión, diseñado para tu comodidad y estilo.
-    </p>
-    <div class="d-flex justify-content-center gap-3">
-      <a href="/productos" class="btn btn-light btn-lg px-4 py-2 rounded-pill">
-        <i class="bi bi-cart me-2"></i> Comprar ahora
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Banner de envío gratis -->
-<section class="container mb-5">
-  <div class="shipping-banner">
-    <div class="row align-items-center">
-      <div class="col-md-4 text-center mb-4 mb-md-0">
-        <img
-          src="https://i.pinimg.com/736x/06/05/80/0605808a85fd8f2bdf2a55d3770b8b8b.jpg"
-          class="shipping-image"
-          alt="Sandalia mujer"
-        />
-      </div>
-      <div class="col-md-4 text-center">
-        <div class="shipping-icon">
-          <i class="bi bi-truck"></i>
-        </div>
-        <h2 class="fw-bold mb-3">Envío <strong>GRATIS</strong></h2>
-        <p class="fs-5">Por compras superiores a <strong>$299.900</strong></p>
-        <a class="btn btn-light btn-lg px-4 rounded-pill mt-2" href="/">
+<span>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container text-center">
+      <h1 class="hero-title">Encuentra tu estilo perfecto</h1>
+      <p class="hero-subtitle">
+        Calzado de calidad para cada ocasión, diseñado para tu comodidad y
+        estilo.
+      </p>
+      <div class="d-flex justify-content-center gap-3">
+        <a
+          href="/productos"
+          class="btn btn-light btn-lg px-4 py-2 rounded-pill"
+        >
           <i class="bi bi-cart me-2"></i> Comprar ahora
         </a>
-        <p class="mt-3 small opacity-75">Exclusivo online • Aplican TyC</p>
-      </div>
-      <div class="col-md-4 text-center">
-        <img
-          src="https://i.pinimg.com/736x/45/da/eb/45daeb6aaa38dfd41f43bbf0e886861d.jpg"
-          class="shipping-image"
-          alt="Zapatilla hombre"
-        />
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Sección de características -->
-<section class="features-section">
-  <div class="container">
-    <div class="row text-center">
-      <div class="col-md-3 mb-4 mb-md-0">
-        <div class="feature-box">
-          <div class="feature-icon">
+  <!-- Banner de envío gratis -->
+  <section class="container mb-5">
+    <div class="shipping-banner">
+      <div class="row align-items-center">
+        <div class="col-md-4 text-center mb-4 mb-md-0">
+          <img
+            src="https://i.pinimg.com/736x/06/05/80/0605808a85fd8f2bdf2a55d3770b8b8b.jpg"
+            class="shipping-image"
+            alt="Sandalia mujer"
+          />
+        </div>
+        <div class="col-md-4 text-center">
+          <div class="shipping-icon">
             <i class="bi bi-truck"></i>
           </div>
-          <h5>Envío Rápido</h5>
-          <p>Recibe tus productos en 24-48 horas</p>
+          <h2 class="fw-bold mb-3">Envío <strong>GRATIS</strong></h2>
+          <p class="fs-5">Por compras superiores a <strong>$299.900</strong></p>
+          <a class="btn btn-light btn-lg px-4 rounded-pill mt-2" href="/">
+            <i class="bi bi-cart me-2"></i> Comprar ahora
+          </a>
+          <p class="mt-3 small opacity-75">Exclusivo online • Aplican TyC</p>
         </div>
-      </div>
-      <div class="col-md-3 mb-4 mb-md-0">
-        <div class="feature-box">
-          <div class="feature-icon">
-            <i class="bi bi-arrow-left-right"></i>
-          </div>
-          <h5>Devoluciones Fáciles</h5>
-          <p>30 días para cambiar tu producto</p>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4 mb-md-0">
-        <div class="feature-box">
-          <div class="feature-icon">
-            <i class="bi bi-shield-check"></i>
-          </div>
-          <h5>Pago Seguro</h5>
-          <p>Protegemos tus datos personales</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="feature-box">
-          <div class="feature-icon">
-            <i class="bi bi-headset"></i>
-          </div>
-          <h5>Soporte 24/7</h5>
-          <p>Asistencia personalizada siempre</p>
+        <div class="col-md-4 text-center">
+          <img
+            src="https://i.pinimg.com/736x/45/da/eb/45daeb6aaa38dfd41f43bbf0e886861d.jpg"
+            class="shipping-image"
+            alt="Zapatilla hombre"
+          />
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Sección de productos -->
-<section class="container my-5" id="productos">
-  <div class="d-flex justify-content-between align-items-center mb-4"></div>
-
-  <!-- Estado de carga -->
-  {#if cargando}
-    <div class="row">
-      <div class="col-12 text-center py-5">
-        <div class="spinner-border loading-spinner" role="status">
-          <span class="visually-hidden">Cargando...</span>
-        </div>
-        <p class="mt-3">Cargando productos...</p>
-      </div>
-    </div>
-
-    <!-- Sin productos -->
-  {:else if productos.length === 0}
-    <div class="row">
-      <div class="col-12 text-center py-5">
-        <i class="bi bi-exclamation-circle fs-1 text-secondary"></i>
-        <h3 class="mt-3">No hay productos disponibles</h3>
-        <p>Pronto tendremos nuevos productos en nuestra tienda</p>
-      </div>
-    </div>
-
-    <!-- Lista de productos -->
-  {:else}
-    <div class="row g-4">
-      <!-- Productos -->
-      <div class="col-12 col-lg-8">
-        <div class="row w-100">
-          <div class="col-md-6">
-            <h2 class="section-title">Nuestros Productos Destacados</h2>
+  <!-- Sección de características -->
+  <section class="features-section">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-3 mb-4 mb-md-0">
+          <div class="feature-box">
+            <div class="feature-icon">
+              <i class="bi bi-truck"></i>
+            </div>
+            <h5>Envío Rápido</h5>
+            <p>Recibe tus productos en 24-48 horas</p>
           </div>
-          <div class="col-md-6">
-            <div class="btn-group" role="group">
-              <button
-                class="btn category-btn {selectedCategory === 'todos'
-                  ? 'active'
-                  : 'btn-outline-primary'}"
-                on:click={() => changeCategory("todos")}
-              >
-                Todos
-              </button>
-              <button
-                class="btn category-btn {selectedCategory === 'Hombre'
-                  ? 'active'
-                  : 'btn-outline-primary'}"
-                on:click={() => changeCategory("Hombre")}
-              >
-                Hombre
-              </button>
-              <button
-                class="btn category-btn {selectedCategory === 'Mujer'
-                  ? 'active'
-                  : 'btn-outline-primary'}"
-                on:click={() => changeCategory("Mujer")}
-              >
-                Mujer
-              </button>
+        </div>
+        <div class="col-md-3 mb-4 mb-md-0">
+          <div class="feature-box">
+            <div class="feature-icon">
+              <i class="bi bi-arrow-left-right"></i>
+            </div>
+            <h5>Devoluciones Fáciles</h5>
+            <p>30 días para cambiar tu producto</p>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4 mb-md-0">
+          <div class="feature-box">
+            <div class="feature-icon">
+              <i class="bi bi-shield-check"></i>
+            </div>
+            <h5>Pago Seguro</h5>
+            <p>Protegemos tus datos personales</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="feature-box">
+            <div class="feature-icon">
+              <i class="bi bi-headset"></i>
+            </div>
+            <h5>Soporte 24/7</h5>
+            <p>Asistencia personalizada siempre</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de productos -->
+  <section class="container my-5" id="productos">
+    <div class="d-flex justify-content-between align-items-center mb-4"></div>
+
+    <!-- Estado de carga -->
+    {#if cargando}
+      <div class="row">
+        <div class="col-12 text-center py-5">
+          <div class="spinner-border loading-spinner" role="status">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+          <p class="mt-3">Cargando productos...</p>
+        </div>
+      </div>
+
+      <!-- Sin productos -->
+    {:else if productos.length === 0}
+      <div class="row">
+        <div class="col-12 text-center py-5">
+          <i class="bi bi-exclamation-circle fs-1 text-secondary"></i>
+          <h3 class="mt-3">No hay productos disponibles</h3>
+          <p>Pronto tendremos nuevos productos en nuestra tienda</p>
+        </div>
+      </div>
+
+      <!-- Lista de productos -->
+    {:else}
+      <div class="row g-4">
+        <!-- Productos -->
+        <div class="col-12 col-lg-8">
+          <div class="row w-100">
+            <div class="col-md-6">
+              <h2 class="section-title">Nuestros Productos Destacados</h2>
+            </div>
+            <div class="col-md-6">
+              <div class="btn-group" role="group">
+                <button
+                  class="btn category-btn {selectedCategory === 'todos'
+                    ? 'active'
+                    : 'btn-outline-primary'}"
+                  on:click={() => changeCategory("todos")}
+                >
+                  Todos
+                </button>
+                <button
+                  class="btn category-btn {selectedCategory === 'Hombre'
+                    ? 'active'
+                    : 'btn-outline-primary'}"
+                  on:click={() => changeCategory("Hombre")}
+                >
+                  Hombre
+                </button>
+                <button
+                  class="btn category-btn {selectedCategory === 'Mujer'
+                    ? 'active'
+                    : 'btn-outline-primary'}"
+                  on:click={() => changeCategory("Mujer")}
+                >
+                  Mujer
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-          {#each filteredProducts() as p}
-            <div class="col">
-              <div class="card-product px-3 py-4">
-                <div class="card-img-container">
-                  <img src={p.imagen} alt={p.nombre} class="img-fluid" />
-                  {#if p.destacado}
-                    <span class="badge bg-danger badge-discount">Destacado</span
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+            {#each filteredProducts() as p}
+              <div class="col">
+                <div class="card-product px-3 py-4">
+                  <div class="card-img-container">
+                    <img src={p.imagen} alt={p.nombre} class="img-fluid" />
+                    {#if p.destacado}
+                      <span class="badge bg-danger badge-discount"
+                        >Destacado</span
+                      >
+                    {/if}
+                    <span class="badge bg-info category-badge">
+                      {p.categoria.charAt(0).toUpperCase() +
+                        p.categoria.slice(1)}
+                    </span>
+                  </div>
+                  <div class="card-body">
+                    <div
+                      class="d-flex justify-content-between align-items-start"
                     >
-                  {/if}
-                  <span class="badge bg-info category-badge">
-                    {p.categoria.charAt(0).toUpperCase() + p.categoria.slice(1)}
-                  </span>
+                      <div>
+                        <h5 class="product-title">{p.nombre}</h5>
+                        <p class="product-model">{p.marca} · {p.modelo}</p>
+                        <div class="rating">
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-half"></i>
+                          <span class="text-muted ms-2">(42)</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="price-container mt-3">
+                      <div>
+                        <div class="current-price">
+                          $ {p.precio.toLocaleString("es-CO")}
+                        </div>
+                      </div>
+                      <button class="btn-details">
+                        <i class="bi bi-cart me-1"></i> Añadir
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-start">
-                    <div>
-                      <h5 class="product-title">{p.nombre}</h5>
-                      <p class="product-model">{p.marca} · {p.modelo}</p>
-                      <div class="rating">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-half"></i>
-                        <span class="text-muted ms-2">(42)</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="price-container mt-3">
-                    <div>
-                      <div class="current-price">
-                        $ {p.precio.toLocaleString("es-CO")}
-                      </div>
-                    </div>
-                    <button class="btn-details">
-                      <i class="bi bi-cart me-1"></i> Añadir
-                    </button>
-                  </div>
+              </div>
+            {/each}
+          </div>
+        </div>
+
+        <!-- Carrusel lateral y promociones -->
+        <div class="col-12 col-lg-4 mt-5 mt-lg-0">
+          <div class="promo-section">
+            <h3 class="section-title">Promociones</h3>
+
+            <!-- Carrusel de promociones -->
+            <div class="promo-card">
+              <div class="position-relative">
+                {#if currentSlide === 0}
+                  <img
+                    src="https://i.pinimg.com/736x/28/a7/31/28a73190ddc0879a30d3fb6fdb6cd3d8.jpg"
+                    alt="Promoción 1"
+                  />
+                {:else if currentSlide === 1}
+                  <img
+                    src="https://i.pinimg.com/736x/f7/71/54/f77154218233b60a149d584803e47816.jpg"
+                    alt="Promoción 2"
+                  />
+                {:else}
+                  <img
+                    src="https://i.pinimg.com/736x/ba/d4/35/bad435a4a198ff94f0b6994eaa94fb68.jpg"
+                    alt="Promoción 3"
+                  />
+                {/if}
+
+                <!-- svelte-ignore a11y_consider_explicit_label -->
+                <div class="position-absolute top-0 end-0 p-3">
+                  <button
+                    class="btn btn-sm btn-light rounded-circle me-1"
+                    on:click={prevSlide}
+                  >
+                    <i class="bi bi-chevron-left"></i>
+                  </button>
+                  <button
+                    class="btn btn-sm btn-light rounded-circle"
+                    on:click={nextSlide}
+                  >
+                    <i class="bi bi-chevron-right"></i>
+                  </button>
+                </div>
+
+                <div
+                  class="carousel-caption bg-dark bg-opacity-75 p-3 rounded-3"
+                >
+                  <h5>
+                    {#if currentSlide === 0}
+                      Rebajas de temporada
+                    {:else if currentSlide === 1}
+                      Nueva colección
+                    {:else}
+                      Envío gratuito
+                    {/if}
+                  </h5>
+                  <p class="mb-0">
+                    {#if currentSlide === 0}
+                      Aprovecha descuentos en referencias seleccionadas
+                    {:else if currentSlide === 1}
+                      Descubre lo nuevo en calzado urbano
+                    {:else}
+                      Por compras mayores a $299.900
+                    {/if}
+                  </p>
                 </div>
               </div>
             </div>
-          {/each}
-        </div>
-      </div>
 
-      <!-- Carrusel lateral y promociones -->
-      <div class="col-12 col-lg-4 mt-5 mt-lg-0">
-        <div class="promo-section">
-          <h3 class="section-title">Promociones</h3>
-
-          <!-- Carrusel de promociones -->
-          <div class="promo-card">
-            <div class="position-relative">
-              {#if currentSlide === 0}
-                <img
-                  src="https://i.pinimg.com/736x/28/a7/31/28a73190ddc0879a30d3fb6fdb6cd3d8.jpg"
-                  alt="Promoción 1"
-                />
-              {:else if currentSlide === 1}
-                <img
-                  src="https://i.pinimg.com/736x/f7/71/54/f77154218233b60a149d584803e47816.jpg"
-                  alt="Promoción 2"
-                />
-              {:else}
-                <img
-                  src="https://i.pinimg.com/736x/ba/d4/35/bad435a4a198ff94f0b6994eaa94fb68.jpg"
-                  alt="Promoción 3"
-                />
-              {/if}
-
-              <!-- svelte-ignore a11y_consider_explicit_label -->
-              <div class="position-absolute top-0 end-0 p-3">
-                <button
-                  class="btn btn-sm btn-light rounded-circle me-1"
-                  on:click={prevSlide}
-                >
-                  <i class="bi bi-chevron-left"></i>
-                </button>
-                <button
-                  class="btn btn-sm btn-light rounded-circle"
-                  on:click={nextSlide}
-                >
-                  <i class="bi bi-chevron-right"></i>
-                </button>
-              </div>
-
-              <div class="carousel-caption bg-dark bg-opacity-75 p-3 rounded-3">
-                <h5>
-                  {#if currentSlide === 0}
-                    Rebajas de temporada
-                  {:else if currentSlide === 1}
-                    Nueva colección
-                  {:else}
-                    Envío gratuito
-                  {/if}
-                </h5>
-                <p class="mb-0">
-                  {#if currentSlide === 0}
-                    Aprovecha descuentos en referencias seleccionadas
-                  {:else if currentSlide === 1}
-                    Descubre lo nuevo en calzado urbano
-                  {:else}
-                    Por compras mayores a $299.900
-                  {/if}
+            <!-- Tarjetas de promoción adicionales -->
+            <div class="promo-card">
+              <img
+                src="https://i.pinimg.com/736x/06/05/80/0605808a85fd8f2bdf2a55d3770b8b8b.jpg"
+                alt="Promoción 4"
+              />
+              <div class="promo-content">
+                <h5 class="fw-bold">Colección Verano 2023</h5>
+                <p class="mb-2">
+                  Sandalia y calzado fresco para esta temporada
                 </p>
+                <a href="/" class="btn btn-sm btn-outline-primary"
+                  >Ver colección</a
+                >
               </div>
             </div>
-          </div>
 
-          <!-- Tarjetas de promoción adicionales -->
-          <div class="promo-card">
-            <img
-              src="https://i.pinimg.com/736x/06/05/80/0605808a85fd8f2bdf2a55d3770b8b8b.jpg"
-              alt="Promoción 4"
-            />
-            <div class="promo-content">
-              <h5 class="fw-bold">Colección Verano 2023</h5>
-              <p class="mb-2">Sandalia y calzado fresco para esta temporada</p>
-              <a href="/" class="btn btn-sm btn-outline-primary"
-                >Ver colección</a
-              >
-            </div>
-          </div>
-
-          <div class="promo-card">
-            <img
-              src="https://i.pinimg.com/1200x/5b/29/ae/5b29ae274109c43979f87518001c8636.jpg"
-              alt="Promoción 5"
-            />
-            <div class="promo-content">
-              <h5 class="fw-bold">Outlet Especial</h5>
-              <p class="mb-2">Hasta 50% de descuento en modelos anteriores</p>
-              <a href="/" class="btn btn-sm btn-outline-primary">Ver ofertas</a>
+            <div class="promo-card">
+              <img
+                src="https://i.pinimg.com/1200x/5b/29/ae/5b29ae274109c43979f87518001c8636.jpg"
+                alt="Promoción 5"
+              />
+              <div class="promo-content">
+                <h5 class="fw-bold">Outlet Especial</h5>
+                <p class="mb-2">Hasta 50% de descuento en modelos anteriores</p>
+                <a href="/" class="btn btn-sm btn-outline-primary"
+                  >Ver ofertas</a
+                >
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  {/if}
-</section>
+    {/if}
+  </section>
+</span>
 
 <style>
   /* Variables CSS */
